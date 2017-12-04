@@ -5,7 +5,6 @@ import android.os.Build;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.ViewDragHelper;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,7 +73,6 @@ public class SnakeButtonLayout extends RelativeLayout {
                 //去除阴影
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     floatButton.setElevation(0);
-                    Log.d("test244", "" + Build.VERSION.SDK_INT);
                 }
             }
         }
@@ -95,7 +93,6 @@ public class SnakeButtonLayout extends RelativeLayout {
         @Override
         public boolean tryCaptureView(View child, int pointerId) {
             downTime = System.currentTimeMillis();
-            Log.d("timedown", "" + downTime);
             if (child == topView) {
                 topView.stopAnimation();
                 return true;
@@ -121,8 +118,8 @@ public class SnakeButtonLayout extends RelativeLayout {
         @Override
         public void onViewReleased(View releasedChild, float xvel, float yvel) {
             upTime = System.currentTimeMillis();
-            Log.d("timeup", "" + upTime);
-            if ((upTime - downTime) < 500L) {
+            //拖拽 < 250ms 触发点击事件
+            if ((upTime - downTime) < 250L) {
                 onTopViewClickListener.onclick();
             }
             controller.onRelease(topView);
@@ -131,7 +128,6 @@ public class SnakeButtonLayout extends RelativeLayout {
         @Override
         public int getViewHorizontalDragRange(View child)
         {
-            Log.d("ceshi","" + getMeasuredWidth() + "///" + child.getMeasuredWidth());
             return getMeasuredWidth()-child.getMeasuredWidth();
         }
 
