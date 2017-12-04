@@ -32,4 +32,4 @@
         setContentView(R.layout.activity_main);
  ` Remember `:  set this before  `setContentView(..) `
  
- ![image](https://github.com/ZhengYaWei1992/ZWProgressView/blob/master/Untitled3.gif)
+ ![image]()
