@@ -9,7 +9,7 @@
 	}
   
   	dependencies {
-	        compile 'com.github.monkeywiiu:Xmenu:-SNAPSHOT'
+	        compile 'com.github.monkeywiiu:Xmenu:v2.0'
 	}
 ### Step2
 
