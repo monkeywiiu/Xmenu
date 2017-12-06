@@ -25,12 +25,13 @@
 
         //设置图片和颜色
         PUtils.getInstance().setImagesAndColors(List<Integer> imageList, List<Integer> colorList);
-
-        //设置悬浮按钮的margin
-        PUtils.getInstance().setMargin((int) getResources().getDimension(R.dimen.margin));
-        
+        //设置是否可见，默认是不可见
+	PUtils.getInstance().setVisible(true);
+        //设置悬浮按钮的margin
+        PUtils.getInstance().setMargin((int) getResources().getDimension(R.dimen.marginRight),
+                (int) getResources().getDimension(R.dimen.marginBottom));
         setContentView(R.layout.activity_main);
- ` Remember `:  set this before  `setContentView(..) `
+ ` Remember `:  set these before  `setContentView(..) `
  
   ### Add click event
  
