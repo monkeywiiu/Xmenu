@@ -22,8 +22,8 @@
 ```
 `just like RelativeLayout`
 ### Step3
-
-        //设置图片和颜色
+```
+        //设置图片和颜色
         PUtils.getInstance().setImagesAndColors(List<Integer> imageList, List<Integer> colorList);
         //设置是否可见，默认是不可见
 	PUtils.getInstance().setVisible(true);
@@ -32,7 +32,7 @@
                 (int) getResources().getDimension(R.dimen.marginBottom));
         setContentView(R.layout.activity_main);
  ` Remember `:  set these before  `setContentView(..) `
- 
+ ```
   ### Add click event
  
  ```
