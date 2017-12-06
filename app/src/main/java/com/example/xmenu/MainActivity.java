@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     public SnakeButtonLayout container;
     public List<Integer> imageList;
     public List<Integer> colorList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         PUtils.getInstance().setMargin((int) getResources().getDimension(R.dimen.margin));
         setContentView(R.layout.activity_main);
         container = (SnakeButtonLayout) findViewById(R.id.container);
+        container.setIsClickable(true);
         container.setOnTopViewClickListener(new SnakeButtonLayout.onTopViewClickListener() {
             @Override
             public void onclick() {

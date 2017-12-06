@@ -28,6 +28,7 @@ public class SnakeButtonLayout extends RelativeLayout {
     public int margin;
     public onTopViewClickListener onTopViewClickListener;
     public long upTime = 0, downTime = 0;
+    public boolean isClickable = false;
 
     public interface onTopViewClickListener {
          void onclick();
@@ -119,7 +120,7 @@ public class SnakeButtonLayout extends RelativeLayout {
         public void onViewReleased(View releasedChild, float xvel, float yvel) {
             upTime = System.currentTimeMillis();
             //拖拽 < 250ms 触发点击事件
-            if ((upTime - downTime) < 250L) {
+            if ((upTime - downTime) < 250L && isClickable == true) {
                 onTopViewClickListener.onclick();
             }
             controller.onRelease(topView);
@@ -138,6 +139,9 @@ public class SnakeButtonLayout extends RelativeLayout {
         }
     }
 
+    public void setIsClickable(boolean isClickable) {
+        this.isClickable = isClickable;
+    }
     /*实时刷新
     保持平滑状态
      */
