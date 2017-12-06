@@ -10,7 +10,8 @@ public class PUtils {
 
     public List<Integer> imagelist;
     public List<Integer> colorlist;
-    public int margin;
+    public int marginRight, marginBottom;
+    public boolean isVisible;
     private static PUtils instance = new PUtils();
 
     public static PUtils getInstance() {
@@ -30,10 +31,18 @@ public class PUtils {
         instance.colorlist = colorlist;
     }
 
-    public void setMargin(int margin) {
-        this.margin = margin;
+    public void setMargin(int marginRight, int marginBottom) {
+        instance.marginRight = marginRight;
+        instance.marginBottom = marginBottom;
     }
 
+    public void setVisible(boolean isVisible) {
+        getInstance().isVisible = isVisible;
+    }
+
+    public boolean getVisible() {
+        return getInstance().isVisible;
+    }
     public static List<Integer> getImages() {
         return getInstance().imagelist;
     }
@@ -42,7 +51,11 @@ public class PUtils {
         return getInstance().colorlist;
     }
 
-    public int getMargin() {
-        return margin;
+    public int getMarginRight() {
+        return getInstance().marginRight;
+    }
+
+    public int getMarginBottom(){
+        return getInstance().marginBottom;
     }
 }

@@ -25,11 +25,11 @@ public class SnakeButtonLayout extends RelativeLayout {
     public ViewController controller;
     public FloatButton topView;
     public FloatButton topFollowView;
-    public int margin;
+    public int marginRight, marginBottom;
     public onTopViewClickListener onTopViewClickListener;
     public long upTime = 0, downTime = 0;
     public boolean isClickable = false;
-
+    public boolean isVisible = false;
     public interface onTopViewClickListener {
          void onclick();
     }
@@ -39,7 +39,9 @@ public class SnakeButtonLayout extends RelativeLayout {
 
     public SnakeButtonLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
-        margin = PUtils.getInstance().getMargin();
+        marginRight = PUtils.getInstance().getMarginRight();
+        marginBottom = PUtils.getInstance().getMarginBottom();
+        isVisible = PUtils.getInstance().getVisible();
         mDragHelper = ViewDragHelper.create(this, 10f, new MyViewDragCallBack());
         controller = ViewController.getInstance();
     }
@@ -48,16 +50,19 @@ public class SnakeButtonLayout extends RelativeLayout {
     protected void onFinishInflate() {
         super.onFinishInflate();
         initImagesAndColors();
-        if (imageList != null) {
+        if (imageList != null && colorList != null) {
             int len = imageList.size();
             for (int i = 0; i < len; i++) {
                 FloatButton floatButton = new FloatButton(getContext());
                 floatButton.setImageResource(imageList.get(i));
                 floatButton.setBackgroundTintList(getResources().getColorStateList(colorList.get(i)));
 
+                if (!isVisible) {
+                    floatButton.hide();
+                }
                 //添加到主布局中去
                 LayoutParams lp = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                lp.setMargins(0, 0, margin, margin);
+                lp.setMargins(0, 0, marginRight, marginBottom);
                 lp.addRule(ALIGN_PARENT_BOTTOM);
                 lp.addRule(ALIGN_PARENT_RIGHT);
                 viewList.add(floatButton);
@@ -139,9 +144,11 @@ public class SnakeButtonLayout extends RelativeLayout {
         }
     }
 
-    public void setIsClickable(boolean isClickable) {
+    //设置是否可点击
+    public void setClickable(boolean isClickable) {
         this.isClickable = isClickable;
     }
+
     /*实时刷新
     保持平滑状态
      */

@@ -20,14 +20,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initImages();
-        //设置图片和颜色
-        PUtils.getInstance().setImagesAndColors(imageList, colorList);
-
-        //设置悬浮按钮的margin
-        PUtils.getInstance().setMargin((int) getResources().getDimension(R.dimen.margin));
+        PUtils.getInstance().setImagesAndColors(imageList, colorList);//设置图片和颜色
+        PUtils.getInstance().setVisible(true); //设置xMenu可见，默认是不可见
+        PUtils.getInstance().setMargin((int) getResources().getDimension(R.dimen.marginRight),
+                (int) getResources().getDimension(R.dimen.marginBottom));//设置悬浮按钮的margin
         setContentView(R.layout.activity_main);
         container = (SnakeButtonLayout) findViewById(R.id.container);
-        container.setIsClickable(true);
+        container.setClickable(true); //设置可点击，默认是false
+
         container.setOnTopViewClickListener(new SnakeButtonLayout.onTopViewClickListener() {
             @Override
             public void onclick() {
