@@ -31,8 +31,9 @@
         PUtils.getInstance().setMargin((int) getResources().getDimension(R.dimen.marginRight),
                 (int) getResources().getDimension(R.dimen.marginBottom));
         setContentView(R.layout.activity_main);
+```
  ` Remember `:  set these before  `setContentView(..) `
- ```
+ 
   ### Add click event
  
  ```
