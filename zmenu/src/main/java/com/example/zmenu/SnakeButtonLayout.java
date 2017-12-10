@@ -25,7 +25,7 @@ public class SnakeButtonLayout extends RelativeLayout {
     public ViewController controller;
     public FloatButton topView;
     public FloatButton topFollowView;
-    public int marginRight, marginBottom;
+    public int marginRight = 0, marginBottom = 0;
     public onTopViewClickListener onTopViewClickListener;
     public long upTime = 0, downTime = 0;
     public boolean isClickable = false;
@@ -50,39 +50,37 @@ public class SnakeButtonLayout extends RelativeLayout {
     protected void onFinishInflate() {
         super.onFinishInflate();
         initImagesAndColors();
-        if (imageList != null && colorList != null) {
-            int len = imageList.size();
-            for (int i = 0; i < len; i++) {
-                FloatButton floatButton = new FloatButton(getContext());
-                floatButton.setImageResource(imageList.get(i));
-                floatButton.setBackgroundTintList(getResources().getColorStateList(colorList.get(i)));
+        int len = imageList.size();
+        for (int i = 0; i < len; i++) {
+            FloatButton floatButton = new FloatButton(getContext());
+            floatButton.setImageResource(imageList.get(i));
+            floatButton.setBackgroundTintList(getResources().getColorStateList(colorList.get(i)));
 
-                if (!isVisible) {
-                    floatButton.hide();
-                }
-                //添加到主布局中去
-                LayoutParams lp = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                lp.setMargins(0, 0, marginRight, marginBottom);
-                lp.addRule(ALIGN_PARENT_BOTTOM);
-                lp.addRule(ALIGN_PARENT_RIGHT);
-                viewList.add(floatButton);
-                addView(floatButton, lp);
-
-                //获取顶部的view
-                if (i == len - 1) {
-                    topView = floatButton;
-                }
-                if (i == len - 2) {
-                    topFollowView = floatButton;
-                }
-
-                //去除阴影
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    floatButton.setElevation(0);
-                }
+            if (!isVisible) {
+                floatButton.hide();
             }
-        }
+            //添加到主布局中去
+            LayoutParams lp = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            lp.setMargins(0, 0, marginRight, marginBottom);
+            lp.addRule(ALIGN_PARENT_BOTTOM);
+            lp.addRule(ALIGN_PARENT_RIGHT);
+            viewList.add(floatButton);
+            addView(floatButton, lp);
 
+            //获取顶部的view
+            if (i == len - 1) {
+                topView = floatButton;
+            }
+            if (i == len - 2) {
+                topFollowView = floatButton;
+            }
+
+            //去除阴影
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                floatButton.setElevation(0);
+            }
+            }
+        
         controller.init(viewList);
     }
 
