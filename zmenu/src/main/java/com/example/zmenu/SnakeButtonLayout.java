@@ -80,15 +80,26 @@ public class SnakeButtonLayout extends RelativeLayout {
                 floatButton.setElevation(0);
             }
             }
-        
+
         controller.init(viewList);
     }
 
     public void initImagesAndColors() {
         this.imageList = new ArrayList<>();
         this.colorList = new ArrayList<>();
-        this.imageList = PUtils.getImages();
-        this.colorList = PUtils.getColors();
+        if (PUtils.getImages() != null) {
+            this.imageList = PUtils.getImages();
+        } else {
+            this.imageList.add(R.drawable.image1);
+            this.imageList.add(R.drawable.image2);
+        }
+        if (PUtils.getColors() != null) {
+            this.colorList = PUtils.getColors();
+        } else {
+            this.colorList.add(R.color.background1);
+            this.colorList.add(R.color.background2);
+        }
+
     }
 
     public class MyViewDragCallBack extends ViewDragHelper.Callback {
