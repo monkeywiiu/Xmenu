@@ -8,8 +8,9 @@ import java.util.List;
 
 public class PUtils {
 
-    public List<Integer> imagelist;
-    public List<Integer> colorlist;
+    public List<Integer> imageList;
+    public List<Integer> colorList;
+    public List<FloatButton> viewList;
     public int marginRight, marginBottom;
     public boolean isVisible;
     private static PUtils instance = new PUtils();
@@ -27,8 +28,8 @@ public class PUtils {
     }
 
     public  void setImagesAndColors(List<Integer> imagelist , List<Integer> colorlist) {
-        instance.imagelist = imagelist;
-        instance.colorlist = colorlist;
+        instance.imageList = imagelist;
+        instance.colorList = colorlist;
     }
 
     public void setMargin(int marginRight, int marginBottom) {
@@ -44,11 +45,11 @@ public class PUtils {
         return getInstance().isVisible;
     }
     public static List<Integer> getImages() {
-        return getInstance().imagelist;
+        return getInstance().imageList;
     }
 
     public static List<Integer> getColors() {
-        return getInstance().colorlist;
+        return getInstance().colorList;
     }
 
     public int getMarginRight() {
@@ -57,5 +58,13 @@ public class PUtils {
 
     public int getMarginBottom(){
         return getInstance().marginBottom;
+    }
+
+    public void setViewList(List<FloatButton> viewList) {
+        instance.viewList = viewList;
+    }
+
+    public List<FloatButton> getViewList() {
+        return getInstance().viewList;
     }
 }

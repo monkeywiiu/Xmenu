@@ -80,7 +80,7 @@ public class SnakeButtonLayout extends RelativeLayout {
                 floatButton.setElevation(0);
             }
             }
-
+        PUtils.getInstance().setViewList(viewList);
         controller.init(viewList);
     }
 

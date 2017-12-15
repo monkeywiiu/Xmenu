@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import com.example.zmenu.FloatButton;
 import com.example.zmenu.PUtils;
 import com.example.zmenu.SnakeButtonLayout;
 
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     public SnakeButtonLayout container;
     public List<Integer> imageList;
     public List<Integer> colorList;
+    public List<FloatButton> viewList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,11 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "你点击了导航栏", Toast.LENGTH_SHORT).show();
             }
         });
+        //手动隐藏XMenu
+        /*viewList = PUtils.getInstance().getViewList();
+        for (int i = 0; i < viewList.size(); i++) {
+            viewList.get(i).hide();
+        }*/
     }
 
     public void initImages() {
