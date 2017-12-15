@@ -9,7 +9,7 @@
 	}
   
   	dependencies {
-	        compile 'com.github.monkeywiiu:Xmenu:v5'
+	        compile 'com.github.monkeywiiu:Xmenu:v5.1'
 	}
 ### Step2
 
@@ -48,4 +48,13 @@
 ```
  
  ![image](https://github.com/monkeywiiu/Xmenu/blob/master/menu.gif)
+ 
+ ###ADDS
+ ```
+ 手动隐藏XMenu
+        viewList = PUtils.getInstance().getViewList();
+        for (int i = 0; i < viewList.size(); i++) {
+            viewList.get(i).hide();
+        }
+ ```
  
