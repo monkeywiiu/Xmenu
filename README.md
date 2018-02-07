@@ -49,7 +49,7 @@
  
  ![image](https://github.com/monkeywiiu/Xmenu/blob/master/menu.gif)
  
- ###ADDS
+ ### ADDS
  ```
  手动隐藏XMenu
         viewList = PUtils.getInstance().getViewList();
